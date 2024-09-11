@@ -4,7 +4,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, month, dayofweek, dayofmonth
 from pyspark.ml.feature import StandardScaler, StringIndexer, OneHotEncoder, VectorAssembler
 from pyspark.ml.pipeline import Pipeline, PipelineModel, PipelineWriter, PipelineReader, PipelineModelReader, PipelineModelWriter
-
+import matplotlib.pyplot as plt
 
 cluster_seeds = ['localhost:9042', 'localhost:9043']
 
@@ -52,11 +52,21 @@ result = pipelineFit.transform(test_data)
 predictionAndLabels = result.select("prediction", "IS_DELAY")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy").setLabelCol("IS_DELAY")
 
-print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-
-predictionAndLabels.show(100)
+test_accuracy = evaluator.evaluate(predictionAndLabels)
+# Plotting accuracy
+plt.figure(figsize=(8, 6))
+plt.bar(["Test Accuracy"], [test_accuracy], color='blue')
+plt.title("Test Accuracy")
+plt.ylabel("Accuracy")
+plt.savefig("E:/FlightAnalysis/test_accuracy.png")
+print("Test set accuracy = " + str(test_accuracy))
 
 pipeline.write().overwrite().save("hdfs://localhost:9000/output/models/delay_pipeline")
+
+
+
+
+
 
 """
 ========================================================================================
@@ -93,9 +103,14 @@ result = pipelineFit.transform(test_data)
 predictionAndLabels = result.select("prediction", "CANCELLED")
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy").setLabelCol("CANCELLED")
 
-print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
-
-predictionAndLabels.show(100)
+test1_accuracy = evaluator.evaluate(predictionAndLabels)
+# Plotting accuracy
+plt.figure(figsize=(8, 6))
+plt.bar(["Test Accuracy"], [test1_accuracy], color='blue')
+plt.title("Test Accuracy")
+plt.ylabel("Accuracy")
+plt.savefig("E:/FlightAnalysis/test1_accuracy.png")
+print("Test set accuracy = " + str(test1_accuracy))
 
 pipeline.write().overwrite().save("hdfs://localhost:9000/output/models/cancellation_pipeline")
 

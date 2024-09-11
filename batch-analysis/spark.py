@@ -21,7 +21,7 @@ df.printSchema()
 
 """
 ========================================================================================
-Delay Analysis per Carrier
+Phân Tích Độ Trễ Theo Hãng Hàng Không
 ========================================================================================
 """
 
@@ -51,7 +51,7 @@ delay_dayofweek_df = df.select("OP_CARRIER", "FL_DATE", "DEP_DELAY", "ARR_DELAY"
 
 """
 ========================================================================================
-Delay Analysis per Source-Dest
+Phân Tích Độ Trễ Theo Nguồn-Đích
 ========================================================================================
 """
 
@@ -81,7 +81,7 @@ delay_dayofweek_src_dest_df = df.select("ORIGIN", "DEST", "FL_DATE", "DEP_DELAY"
 
 """
 ========================================================================================
-Cancellation & Diverted Analysis per Carrier
+Phân Tích Hủy Bỏ & Chuyển Hướng
 ========================================================================================
 """
 
@@ -123,7 +123,7 @@ cancellation_diverted_dayofweek_df = df.select("OP_CARRIER", "FL_DATE", "CANCELL
 
 """
 ========================================================================================
-Cancellation & Diverted Analysis per Origin Destination
+Phân tích hủy bỏ và chuyển hướng trên mỗi điểm đến ban đầu
 ========================================================================================
 """
 
@@ -165,7 +165,7 @@ cancellation_diverted_dayofweek_src_dest_df = df.select("ORIGIN", "DEST", "FL_DA
 
 """
 ========================================================================================
-Distance Analysis per Carrier
+Phân Tích Khoảng Cách Theo Hãng Hàng Không
 ========================================================================================
 """
 
@@ -199,7 +199,7 @@ dist_dayofweek_df = df.select("OP_CARRIER", "FL_DATE", "DISTANCE") \
 
 """
 ========================================================================================
-Max consec days of Delay Analysis per Carrier
+Phân Tích Số Ngày Trễ Tối Đa Liên Tiếp
 ========================================================================================
 """
 
@@ -229,7 +229,7 @@ max_consec_delay_year_src_dest_df = df.select("ORIGIN", "DEST", "FL_DATE", "ARR_
 
 """
 ========================================================================================
-Group by Source-Dest and Cancellation Code 
+Nhóm Theo Nguồn-Đích và Mã Hủy Bỏ
 ========================================================================================
 """
 src_dest_canc_code_df = df.select("ORIGIN", "DEST", "FL_DATE", "CANCELLED", "CANCElLATION_CODE") \
@@ -242,7 +242,7 @@ src_dest_canc_code_df = df.select("ORIGIN", "DEST", "FL_DATE", "CANCELLED", "CAN
 
 """
 ========================================================================================
-Writing Result to Cassandra
+Ghi Kết Quả vào Cassandra
 ========================================================================================
 """
 

@@ -75,7 +75,7 @@ delay_df = df.select("OP_CARRIER", "FL_DATE", "DEP_DELAY", "ARR_DELAY") \
     .withColumn("MONTH", month("FL_DATE")) \
     .groupBy("OP_CARRIER", "MONTH") \
     .agg(avg("DEP_DELAY").alias("DEP_DELAY"), avg("ARR_DELAY").alias("ARR_DELAY")) \
-    .select("OP_CARRIER", "MONTH", "DELAY")
+    .select("OP_CARRIER", "MONTH", "DEP_DELAY", "ARR_DELAY")
 
 
 def writing(df, i) :

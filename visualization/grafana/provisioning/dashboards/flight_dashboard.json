@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -19,18 +22,24 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 2,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "InfluxDB",
+      "datasource": {
+        "uid": "InfluxDB"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -87,15 +96,20 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "alias": "Media ARR_DELAY",
+          "datasource": {
+            "uid": "InfluxDB"
+          },
           "groupBy": [
             {
               "params": [
@@ -133,6 +147,9 @@
         },
         {
           "alias": "Media DEP_DELAY",
+          "datasource": {
+            "uid": "InfluxDB"
+          },
           "groupBy": [
             {
               "params": [
@@ -174,7 +191,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": {
+        "uid": "InfluxDB"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -182,6 +201,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -240,16 +261,21 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "1.8.9",
       "targets": [
         {
           "alias": "Distanza percorsa",
+          "datasource": {
+            "uid": "InfluxDB"
+          },
           "groupBy": [
             {
               "params": [
@@ -290,7 +316,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": {
+        "uid": "InfluxDB"
+      },
       "gridPos": {
         "h": 15,
         "w": 12,
@@ -300,6 +328,9 @@
       "id": 8,
       "targets": [
         {
+          "datasource": {
+            "uid": "InfluxDB"
+          },
           "groupBy": [],
           "hide": false,
           "measurement": "edges_graph",
@@ -346,6 +377,9 @@
           "tags": []
         },
         {
+          "datasource": {
+            "uid": "InfluxDB"
+          },
           "groupBy": [],
           "hide": false,
           "measurement": "nodes_graph",
@@ -371,7 +405,9 @@
       "type": "nodeGraph"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": {
+        "uid": "InfluxDB"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -417,12 +453,16 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         }
       },
       "pluginVersion": "8.1.5",
       "targets": [
         {
+          "datasource": {
+            "uid": "InfluxDB"
+          },
           "groupBy": [
             {
               "params": [
@@ -463,7 +503,9 @@
       "type": "histogram"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": {
+        "uid": "InfluxDB"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -471,7 +513,8 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "displayMode": "auto",
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -499,12 +542,22 @@
       },
       "id": 10,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "frameIndex": 5,
         "showHeader": true
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "9.1.5",
       "targets": [
         {
+          "datasource": {
+            "uid": "InfluxDB"
+          },
           "groupBy": [],
           "measurement": "raw_flights",
           "orderByTime": "ASC",
@@ -569,7 +622,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 30,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -579,9 +632,12 @@
     "from": "2021-09-25T15:50:52.056Z",
     "to": "2021-09-25T16:00:23.079Z"
   },
-  "timepicker": {},
+  "timepicker": {
+    "hidden": false
+  },
   "timezone": "",
   "title": "flight_dashboard",
   "uid": "ve5W5THnk",
-  "version": 1
+  "version": 4,
+  "weekStart": ""
 }

@@ -15,6 +15,7 @@ datasources:
   orgId: 1
   # <string> url
   url: http://influx:8086
+  
   # <string> database user, if used
   user: user
   password: pass
